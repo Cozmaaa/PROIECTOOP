@@ -27,6 +27,7 @@ char *citireComanda(char comanda[100])
     cout << "Introduceti comanda: ";
     cin.getline(comanda, 100);
     char *p = strtok(comanda, " (");
+    char c;
     while (p) //Se parcurge sirul de caractere pana cand nu mai exista tokenuri
     {
    
@@ -81,8 +82,9 @@ char *citireComanda(char comanda[100])
                     
                 }
               
-
-                //informatii[i++]=contor;
+                c=(char)(contor+'0');
+                informatii[i]=&c;
+                cout<<informatii[i];
             }
             else //Daca tokenul curent nu este "table" se afiseaza un mesaj de eroare
              {
@@ -100,8 +102,3 @@ char *citireComanda(char comanda[100])
   return *informatii;  //Se returneaza vectorul informatii
 }
 
-
-void CreareColoana(char*informatii[2000])
-{
-
-}

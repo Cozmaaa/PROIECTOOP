@@ -7,7 +7,15 @@ using namespace std;
 int main()
 {
     char comanda[100];
-    citireComanda(comanda);
+   citireComanda(comanda);
+
+    
+  //  char numeTabel[100];
+   // strcpy(numeTabel, "Tabel1");
+   // Tabel t1;
+  //  t1.setNumeTabel(numeTabel);
+   // cout<<t1.getNumeTabel();
+    
     return 0;
 }
 
