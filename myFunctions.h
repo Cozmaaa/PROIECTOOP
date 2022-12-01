@@ -20,14 +20,15 @@ char *toLower(char *sir) //Functie care converteste un sir de caractere in liter
     return sir;
 }
 
+
 char *citireComanda(char comanda[100])
 {
     int contor = 0;
+    int i=0;
     char *informatii[2000];
     cout << "Introduceti comanda: ";
     cin.getline(comanda, 100);
     char *p = strtok(comanda, " (");
-    char c;
     while (p) //Se parcurge sirul de caractere pana cand nu mai exista tokenuri
     {
    
@@ -40,10 +41,11 @@ char *citireComanda(char comanda[100])
                 cout << "Numele tabelei este: " << p << endl;
                 informatii[0] = p; //Se stocheaza numele tabelei in vectorul informatii pe pozitia 0
                 int i = 1; // il punem pe i in afara while-ului pentru a memora toate coloanele , nu doar ultima ( daca il punem in while, i se va reseta la fiecare iteratie)
+                p = strtok(NULL, " (");
                 while (p)
                 {
                     
-                    p = strtok(NULL, " (");
+                   
                     if (p)
                     {
                         cout << "Numele coloanei este: " << p << endl;
@@ -68,8 +70,8 @@ char *citireComanda(char comanda[100])
                         int copiei=i;
                         for(int j=0;j<atoi(informatii[copiei-1]);j++) //Se copiaza valorile implicite in vectorul informatii //atoi(informatii[copiei-1]) este dimensiunea coloanei                    
                         {// atoi transforma un sir de caractere in intreg
-                            informatii[i++] = p; //Se stocheaza valoarea implicita in vectorul informatii pe pozitia i
-                            p=strtok(NULL," ("); //Se trece la urmatorul token
+                            informatii[i++] = p; //Se stocheaza valoarea implicita in vectorul informatii pe pozitia i 
+                           p=strtok(NULL," ("); //Se trece la urmatorul token
                         }
 
                
@@ -81,9 +83,8 @@ char *citireComanda(char comanda[100])
                     contor++;
                     
                 }
-              
-                c=(char)(contor+'0');
-                informatii[i]=&c;
+               char c[3]={(char)(contor+48)};
+                informatii[i]=c;
                 cout<<informatii[i];
             }
             else //Daca tokenul curent nu este "table" se afiseaza un mesaj de eroare
@@ -98,6 +99,7 @@ char *citireComanda(char comanda[100])
             break;
         }
     }
+
 
   return *informatii;  //Se returneaza vectorul informatii
 }
